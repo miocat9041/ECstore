@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{base::layout(~{::section})}">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<section>
+
+		<div class="container mt-5 p-5">
+			<form th:action="@{/payment}" method="post">
+				<div class="row">
+
+					<div class="col-md-6">
+
+
+						<div class="mb-3 row">
+							<p class="text-center fs-4">付款資訊填寫</p>
+							<hr>
+							<div class="col p-1">
+								<label>名字</label> <input type="text" name="firstName" required
+									class="form-control mt-1">
+							</div>
+							<div class="col p-1">
+								<label>姓氏</label> <input type="text" name="lastName" required
+									class="form-control mt-1">
+							</div>
+						</div>
+
+						<div class="mb-3 row">
+							<div class="col p-1">
+								<label>Email</label> <input type="email" name="email" required
+									class="form-control col">
+							</div>
+							<div class="col p-1">
+								<label>手機號碼</label> <input type="text" name="mobileNo" required
+									class="form-control col ms-2">
+							</div>
+						</div>
+
+						<div class="mb-3 row">
+							<div class="col p-1">
+								<label>地址</label> <input type="text" name="address" required
+									class="form-control col">
+							</div>
+							<div class="col p-1">
+								<label>城市</label> <input type="text" name="city" required
+									class="form-control col ms-2">
+							</div>
+						</div>
+						<div class="mb-3 row">
+							<div class="col p-1">
+								<label>區域</label> <input type="text" name="state" required
+									class="form-control col">
+							</div>
+							<div class="col p-1">
+								<label>郵遞區號</label> <input type="number" name="pincode" required
+									class="form-control col ms-2">
+							</div>
+						</div>
+						<!-- </form> -->
+
+					</div>
+					<div class="col-md-6">
+						<p class="text-center fs-4">付款方式</p>
+						<hr>
+						<div class="card">
+							<div class="card-body">
+								<table class="table table-borderless">
+									<tbody>
+										<tr>
+											<td>總金額</td>
+											<td>:</td>
+											<td>&#36; [[${orderPrice}]]</td>
+										</tr>
+										<tr>
+											<td>運費</td>
+											<td>:</td>
+											<td>&#36; 250</td>
+										</tr>
+
+										<tr>
+											<td>稅額</td>
+											<td>:</td>
+											<td>&#36; 100</td>
+										</tr>
+
+										<tr class="border-top">
+											<td>總金額</td>
+											<td>:</td>
+											<td>&#36; [[${totalOrderPrice}]]</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+
+						<div class="card shadow p-3 mb-5 mt-2 bg-body-tertiary rounded">
+
+							<div class="card-body">
+								<!-- <form action="/login" method="post"> -->
+								<div class="mb-3">
+									<label class="form-label">選擇付款方式</label> <select required
+										name="paymentType" class="form-control">
+										<option>--select--</option>
+										<option value="COD">貨到付款</option>
+										<option value="ONLINE">線上付款</option>
+									</select>
+
+								</div>
+						            <a href="/" class="btn btn-primary">繼續購物</a>
+						            <button type="submit" class="btn btn-success">前往付款</button>
+
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</form>
+		</div>
+
+	</section>
+</body>
+</html>

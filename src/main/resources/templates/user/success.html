@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+		th:replace="~{base::layout(~{::section})}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>付款成功</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        .container {
+            margin-top: 50px;
+            padding: 20px;
+            text-align: center;
+        }
+        .fa-circle-check {
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <section>
+        <div class="container mt-5 p-5">
+            <div class="row">
+                <div class="col-md-6 offset-md-3 text-center">
+                    <i class="fa-solid fa-circle-check fa-5x text-success"></i>
+                    <p class="fs-3">付款成功</p>
+                    <p class="fs-4">您的訂單編號：<strong th:text="${merchantTradeNo}"></strong></p>
+                    <p class="fs-4">付款時間：<strong th:text="${paymentDate}"></strong></p>
+                    <p class="fs-4">交易號碼：<strong th:text="${tradeNo}"></strong></p>
+                    <p class="fs-4">總金額：<strong th:text="${totalAmount}"></strong> 元</p>
+                    <p class="fs-4">您的產品將於七天內送達，謝謝！</p>
+                    <div class="text-center">
+                        <a href="/" class="btn btn-primary">返回首頁</a>
+                        <a href="/user/user-orders" class="btn btn-primary">查看您的訂單</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
