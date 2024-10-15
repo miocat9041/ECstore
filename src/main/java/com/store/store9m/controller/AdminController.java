@@ -331,5 +331,21 @@ public class AdminController {
 		return "/admin/orders";
 
 	}
+	
+	@GetMapping("/profile")
+	public String profile() {
+		return "/admin/profile";
+	}
+
+	@PostMapping("/update-profile")
+	public String updateProfile(@ModelAttribute UserDtls user, @RequestParam MultipartFile img, HttpSession session) {
+		UserDtls updateUserProfile = userService.updateUserProfile(user, img);
+		if (ObjectUtils.isEmpty(updateUserProfile)) {
+			session.setAttribute("errorMsg", "個人檔案更新未成功");
+		} else {
+			session.setAttribute("succMsg", "個人檔案更新成功");
+		}
+		return "redirect:/admin/profile";
+	}
 
 }

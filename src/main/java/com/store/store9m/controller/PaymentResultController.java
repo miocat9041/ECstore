@@ -7,18 +7,29 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
-
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.store.store9m.model.OrderResult;
 import com.store.store9m.repository.OrderResultRepository;
+import com.store.store9m.service.NgrokService;
 
 
-@Controller
+@RestController
 public class PaymentResultController {
+	
+	@Autowired
+    private NgrokService ngrokService;
+
+    // 可以透過此端點手動觸發更新回調網址
+    @GetMapping("/updateCallbackUrl")
+    public String updateCallbackUrl() {
+        ngrokService.updateECPayCallbackUrl();
+        return "Callback URL 更新完成";
+    }
 	
 	// 使用 @Autowired 進行注入
     @Autowired
